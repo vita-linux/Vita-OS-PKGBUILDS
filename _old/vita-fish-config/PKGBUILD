@@ -1,0 +1,22 @@
+pkgname=vita-fish-config
+_pkgname=vita-fish-config
+_destname="/etc"
+# _licensedir="/usr/share/vita/licenses"
+pkgver=2
+pkgrel=3
+groups=(vita-core)
+pkgdesc="Fish configuration for Vita-OS"
+arch=('x86_64')
+url="https://gitlab.com/vita-linux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+#conflicts('')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/vita-linux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+	install -dm755 "$pkgdir$_destname"
+	cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

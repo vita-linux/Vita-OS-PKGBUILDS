@@ -1,0 +1,21 @@
+# Maintainer: Angel <vita-arch@proton.me>
+
+pkgname=vita-gaming-applications
+pkgver=1.0.0
+pkgrel=3
+arch=(any)
+pkgdesc='Common Applications used for Gaming'
+depends=(
+  vita-gaming-meta
+  gamescope
+  goverlay
+  heroic-games-launcher
+  faugus-launcher
+  lib32-mangohud
+  lutris
+  mangohud
+  steam
+  wqy-zenhei
+  protonplus
+  portproton
+)

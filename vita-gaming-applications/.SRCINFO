@@ -1,0 +1,19 @@
+pkgbase = vita-gaming-applications
+	pkgdesc = Common Applications used for Gaming
+	pkgver = 1.0.0
+	pkgrel = 3
+	arch = any
+	depends = vita-gaming-meta
+	depends = gamescope
+	depends = goverlay
+	depends = heroic-games-launcher
+	depends = faugus-launcher
+	depends = lib32-mangohud
+	depends = lutris
+	depends = mangohud
+	depends = steam
+	depends = wqy-zenhei
+	depends = protonplus
+	depends = portproton
+
+pkgname = vita-gaming-applications

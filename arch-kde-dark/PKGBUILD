@@ -1,0 +1,22 @@
+# Maintainer: Angel <vita-arch@proton.me>
+pkgname=arch-kde-theme
+_pkgname=arch-kde-theme
+_destname="/usr"
+# _licensedir="/usr/share/vita-os/licenses/"
+pkgver=1
+pkgrel=6
+groups=(vita-core)
+pkgdesc="Arch KDE dark theme"
+arch=('x86_64')
+license=('GPL3')
+makedepends=('git')
+depends=()
+# conflicts=(' ')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/vita-linux/vita-themes/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

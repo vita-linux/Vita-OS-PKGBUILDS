@@ -1,0 +1,23 @@
+# AUTHOR: Angel G. Contreras Lopez | <vita-arch@proton.me>
+pkgname=vita-fish-settings
+_pkgname=vita-fish-settings
+_destname="/etc"
+# _license="/usr/share/vita/licenses"
+pkgver=1
+pkgrel=1
+groups=(vita-core)
+pkgdesc="Fish settings for Vita-OS"
+arch=('x86_64')
+url="https://gitlab.com/vita-linux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+#conflicts=('')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+$url")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

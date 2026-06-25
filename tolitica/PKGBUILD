@@ -1,0 +1,37 @@
+# Maintainer Angel vita-arch@proton.me
+pkgname=tolitica
+_pkgname=tolitica
+pkgver=3
+pkgrel=4
+groups=(tolitica)
+pkgdesc="Tolitica Assistant"
+arch=('x86_64')
+url="https://gitlab.com/tolitica/$_pkgname"
+license=('Tolitica EULA')
+makedepends=('git')
+depends=()
+conflicts=('tolitica-dev')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+#source=("${pkgname}::git+https://gitlab.com/arch7z/${_pkgname}#branch=tolitica-arch7z-dev")
+source=("${pkgname}::git+https://gitlab.com/tolitica/${_pkgname}")
+sha256sums=('SKIP')
+install=tolitica.install
+backup=('etc/vita/tolitica/automount/manually_enabled.conf')
+
+package() {
+  _destname1="$pkgdir/etc"
+  _destname2="$pkgdir/opt"
+  _destname3="$pkgdir/usr"
+
+  install -dm755 "$_destname1/skel/.config/autostart"
+  install -dm755 "$_destname2"
+  install -dm755 "$_destname3"
+
+  cp -r "$srcdir/$pkgname/etc/"* "$_destname1"
+  cp -r "$srcdir/$pkgname/opt/"* "$_destname2"
+  cp -r "$srcdir/$pkgname/usr/"* "$_destname3"
+
+  install -Dm644 "$srcdir/$pkgname/etc/skel/.config/autostart/tolitica.desktop" \
+        "$pkgdir/etc/skel/.config/autostart/tolitica.desktop"
+}

@@ -1,0 +1,24 @@
+# Maintainer: Angel Gustavo <vita-arch@proton.me>
+pkgname=vita-installation-config
+_pkgname=vita-installation-config
+_destname="/usr"
+pkgver=2
+pkgrel=3
+groups=(vita-core)
+pkgdesc="Installation files for Vita-OS"
+arch=('any')
+url="https://gitlab.com/vita-linux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+# source=(${pkgname}::"git+https://gitlab.com/xray_os-alloc/alloccraft/${_pkgname}#branch=alpha-features")
+source=(${pkgname}::"git+https://gitlab.com/vita-linux/${_pkgname}")
+sha256sums=('SKIP')
+# install="readme.install"
+package() {
+	install -dm755 "$pkgdir$_destname"
+	cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

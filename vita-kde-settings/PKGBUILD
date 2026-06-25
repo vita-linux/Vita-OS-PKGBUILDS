@@ -1,0 +1,21 @@
+# Maintainer: Angel <vita-arch@proton.me>
+pkgname=vita-kde-settings
+_pkgname=vita-kde-settings
+_destname="/etc"
+pkgver=2
+pkgrel=4
+groups=(vita-core)
+pkgdesc="KDE settings for Vita-OS"
+arch=('x86_64')
+url="https://gitlab.com/vita-linux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/vita-linux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+    install -dm755 "$pkgdir$_destname"
+    cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

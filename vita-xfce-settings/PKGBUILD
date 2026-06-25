@@ -1,0 +1,21 @@
+# Maintainer: Angel <vita-arch@proton.me>
+pkgname=vita-xfce-settings
+_pkgname=vita-xfce-settings
+_destname="/etc"
+pkgver=3
+pkgrel=5
+groups=(vita-core)
+pkgdesc="XFCE settings for Vita-OS"
+arch=('x86_64')
+url="https://gitlab.com/vita-linux/vita-xfce/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/vita-linux/vita-xfce/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+    install -dm755 "$pkgdir$_destname"
+    cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

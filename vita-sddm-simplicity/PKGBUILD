@@ -1,0 +1,25 @@
+# Maintainer: Angel <vita-arch@proton.me>
+pkgname=vita-sddm-simplicity-git
+_pkgname=vita-sddm-simplicity
+_destname1="/usr"
+#_licensedir="/usr/share/vita-os/licenses/"
+pkgver=26.03
+pkgrel=02
+groups=(vita-core)
+pkgdesc="Simplicity theme from isseigx on gitlab"
+arch=('any')
+url="https://gitlab.com/vita-linux/vita-themes/${_pkgname}"
+license=('GPL3')
+depends=('qt5-quickcontrols2' 'qt5-quickcontrols')
+makedepends=('git')
+install=readme.install
+makedepends=('git')
+options=(!strip !emptydirs)
+replaces=()
+source=(${_pkgname}::git+$url)
+sha256sums=('SKIP')
+package() {
+  install -dm755 ${pkgdir}${_licensedir}${_pkgname}
+  install -m644  ${srcdir}/${_pkgname}/LICENSE ${pkgdir}${_licensedir}${_pkgname}
+  cp -r ${srcdir}/${_pkgname}/${_destname1} ${pkgdir}
+}
